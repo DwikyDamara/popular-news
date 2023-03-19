@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+description = "This app show top 5 news in Indonesia based from detik.com"
+
 
 def data_extraction():
     content = requests.get("https://detik.com/")
@@ -23,7 +25,6 @@ def data_extraction():
 
 
 def data_displaying(result):
-
     print("Berita Terpopuler!")
     for i in range(0, 5):
         print(f'{i+1}. {result["Titles"][i]}')
@@ -31,5 +32,6 @@ def data_displaying(result):
 
 
 if __name__ == "__main__":
+    print(description)
     result = data_extraction()
     data_displaying(result)
