@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def data_extraction1():
+def data_extraction():
     content = requests.get("https://detik.com/")
     soup = BeautifulSoup(content.text, "html.parser")
     top5 = soup.find("div", {"class": "box cb-mostpop"})
@@ -22,7 +22,7 @@ def data_extraction1():
     return hasil
 
 
-def data_displaying1(result):
+def data_displaying(result):
 
     print("Berita Terpopuler!")
     for i in range(0, 5):
@@ -31,5 +31,5 @@ def data_displaying1(result):
 
 
 if __name__ == "__main__":
-    result = data_extraction1()
-    data_displaying1(result)
+    result = data_extraction()
+    data_displaying(result)
