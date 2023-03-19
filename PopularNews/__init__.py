@@ -1,12 +1,30 @@
 import requests
 from bs4 import BeautifulSoup
+"""
+Method = Funtion
+Field/Attribute = Variable
+Contructor = The method that is called the first time the object is created. Use to declare variables in this class
+"""
 
-
-class NewsScraper:
-    def __init__(self, url):
-        self.description = "This app show top 5 news in Indonesia based from detik.com"
+class Scraper:
+    def __init__(self, url, description):  #Constructor
+        self.description = description
         self.result = None
         self.url = url
+
+    def data_extraction(self):
+        pass
+
+    def data_displaying(self):
+        pass
+
+    def run(self):
+        self.data_extraction()
+        self.data_displaying()
+
+class NewsScraper(Scraper):
+    def __init__(self, url):
+        super(NewsScraper, self).__init__( url, "Will Show Top 5 News In Indonesia")
 
     def data_extraction(self):
         content = requests.get(self.url)
@@ -34,15 +52,15 @@ class NewsScraper:
             print(f'{i+1}. {result["Titles"][i]}')
             print(f'Link: {result["Urls"][1]}')
 
-    def run(self):
-        self.data_extraction()
-        self.data_displaying()
-
+class ArticleScraper(Scraper):
+    def __init__(self, url):
+        super(ArticleScraper, self).__init__(url, "\nNot Yet Released!!Stay Tuned!!")
 
 if __name__ == "__main__":
     DetikNewsScraper = NewsScraper("https://detik.com/")
     print(DetikNewsScraper.description)
     DetikNewsScraper.run()
-    # print(description)
-    # result = data_extraction()
-    # data_displaying(result)
+
+    MediumArticleScraper = ArticleScraper("https://medium.com/")
+    print(MediumArticleScraper.description)
+    MediumArticleScraper.run()
