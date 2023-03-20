@@ -7,8 +7,10 @@ This package will scrape from [Detik](https://www.detik.com) to get top 5 popula
 This package use BeautifulSoup4 and requests.
 
 # HOW TO USE?
+```commandline
 import PopularNews
 
 if __name__ == "__main__":
     result = PopularNews.data_extraction()
     PopularNews.data_displaying(result)
+```
